@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - python/install-packages:
-          args: install --dev
+          args: --dev
           pkg-manager: pipenv
       - run:
           name: mypy
