@@ -1,0 +1,26 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@1.3.3
+
+jobs:
+  build-and-test:
+    executor: python/default
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pipenv
+      - run:
+          name: mypy
+          command: pipenv run mypy .
+      - run:
+          name: pycodestyle
+          command: pipenv run pycodestyle .
+      - run:
+          name: pytest
+          command: pipenv run pytest .
+
+workflows:
+  main:
+    jobs:
+      - build-and-test
