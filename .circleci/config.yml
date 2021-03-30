@@ -11,14 +11,14 @@ jobs:
       - python/install-packages:
           pkg-manager: pipenv
       - run:
+          name: pytest
+          command: pipenv run pytest .
+      - run:
           name: mypy
           command: pipenv run mypy .
       - run:
           name: pycodestyle
           command: pipenv run pycodestyle .
-      - run:
-          name: pytest
-          command: pipenv run pytest .
 
 workflows:
   main:
