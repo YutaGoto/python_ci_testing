@@ -17,11 +17,10 @@ jobs:
       - run:
           name: pycodestyle
           command: pipenv run pycodestyle .
-      - run:
-          name: pytest
-          command: pipenv run pytest .
 
 workflows:
   main:
     jobs:
       - build-and-test
+      - python/test:
+          test-tool: pytest
